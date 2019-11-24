@@ -1,0 +1,17 @@
+# OS
+*.directory
+*.DS_Store
+
+# IDE and Editors
+/.idea/
+*.iml
+
+/.vs/
+/.vscode/
+
+# Environment
+.env
+.env.development
+
+# Temp files
+*.diff
