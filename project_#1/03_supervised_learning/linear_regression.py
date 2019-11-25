@@ -4,6 +4,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
 plt.rcParams['figure.figsize'] = (20., 10.)
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -63,3 +66,20 @@ for i in range(cnt):
 	ss_r += (Y[i] - y_pred) ** 2
 r2 = 1 - (ss_r/ss_t)
 print(r2)
+
+# Cannor use Rank 1 matrix in scikit learn
+X = X.reshape((cnt, 1))
+
+# Create model
+reg_model = LinearRegression()
+
+# Fitting training data
+reg_model = reg_model.fit(X, Y)
+
+# Y Prediction
+Y_pred = reg_model.predict(X)
+
+# Calculation R2 Score
+r2_score = reg_model.score(X, Y)
+
+print(r2_score)
