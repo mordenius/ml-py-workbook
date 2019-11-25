@@ -130,3 +130,13 @@ An Interval, or range of values, used to estimate a population parameter is call
 Difference between the point estimate and the actual population parameter value is called the **Sampling Error**. 
 
 Margin of Error for a given level of confidence is the greatest possible distance between the point estimate and the value of the parameter it is estimating.
+
+## Hypothesis Testing
+
+Statisticians use hypothesis testing to formally check whether the hypothesis is accepted or rejected.
+
+**Stages**:
+- State the Hypotheses
+- Formulate an Analysis Plan
+- Analyse Sample Data
+- Interpret Results
