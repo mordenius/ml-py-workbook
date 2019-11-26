@@ -137,6 +137,10 @@ mask = (cardio_data.ap_lo == 0) & (cardio_data.ap_hi == 50)
 cardio_data.loc[mask, 'ap_lo'], cardio_data.loc[mask, 'ap_hi'] = 150, 100
 cardio_data.loc[cardio_data.ap_lo == 0, 'ap_lo'] = 80
 
+mask = (cardio_data.ap_lo > cardio_data.ap_hi)
+cardio_data.loc[mask, 'ap_lo'], cardio_data.loc[mask,
+                                                 'ap_hi'] = cardio_data.loc[mask, 'ap_hi'], cardio_data.loc[mask, 'ap_lo']
+
 
 cardio_data.loc[(cardio_data.height == 169) & (
     cardio_data.weight == 16.3), 'weight'] = 63
@@ -177,5 +181,14 @@ cardio_data.loc[cardio_data.height == 168 & (
 
 # Convert age days to years
 cardio_data['age'] = cardio_data['age'] / 365.25
-sns.distplot(cardio_data.age, label='Age', bins=200)
+# sns.distplot(cardio_data.age, label='Age', bins=200)
+# plt.show()
+
+# Draw plot for `ap_lo` and `ap_hi`
+plt.figure(figsize=(12,8))
+plt.scatter(cardio_data.ap_lo, cardio_data.ap_hi, s=9, c=cardio_data.cardio, cmap='seismic')
+plt.colorbar()
+plt.plot([50, 200], [50, 200], '--', linewidth=0.8)
+plt.xlabel('ap_lo')
+plt.ylabel('ap_hi')
 plt.show()
