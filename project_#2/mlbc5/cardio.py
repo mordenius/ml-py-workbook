@@ -174,4 +174,8 @@ cardio_data.loc[(cardio_data.weight.between(140, 199)) & (cardio_data.ap_hi <= 1
 cardio_data.loc[cardio_data.height == 168 & (
     cardio_data.weight == 174), 'weight'] = 68
 
-print(cardio_data.describe())
+
+# Convert age days to years
+cardio_data['age'] = cardio_data['age'] / 365.25
+sns.distplot(cardio_data.age, label='Age', bins=200)
+plt.show()
