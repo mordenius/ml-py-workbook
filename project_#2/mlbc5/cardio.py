@@ -139,7 +139,7 @@ cardio_data.loc[cardio_data.ap_lo == 0, 'ap_lo'] = 80
 
 mask = (cardio_data.ap_lo > cardio_data.ap_hi)
 cardio_data.loc[mask, 'ap_lo'], cardio_data.loc[mask,
-                                                 'ap_hi'] = cardio_data.loc[mask, 'ap_hi'], cardio_data.loc[mask, 'ap_lo']
+                                                'ap_hi'] = cardio_data.loc[mask, 'ap_hi'], cardio_data.loc[mask, 'ap_lo']
 
 
 cardio_data.loc[(cardio_data.height == 169) & (
@@ -185,10 +185,19 @@ cardio_data['age'] = cardio_data['age'] / 365.25
 # plt.show()
 
 # Draw plot for `ap_lo` and `ap_hi`
-plt.figure(figsize=(12,8))
-plt.scatter(cardio_data.ap_lo, cardio_data.ap_hi, s=9, c=cardio_data.cardio, cmap='seismic')
-plt.colorbar()
-plt.plot([50, 200], [50, 200], '--', linewidth=0.8)
-plt.xlabel('ap_lo')
-plt.ylabel('ap_hi')
-plt.show()
+# plt.figure(figsize=(12,8))
+# plt.scatter(cardio_data.ap_lo, cardio_data.ap_hi, s=9, c=cardio_data.cardio, cmap='seismic')
+# plt.colorbar()
+# plt.plot([50, 200], [50, 200], '--', linewidth=0.8)
+# plt.xlabel('ap_lo')
+# plt.ylabel('ap_hi')
+# plt.show()
+
+
+# Append new features
+cardio_data['bml'] = pd.qcut(
+    cardio_data.weight/(cardio_data.height/100)**2, 25, labels=False)
+cardio_data['ap_diff'] = cardio_data.ap_hi = cardio_data.ap_lo
+cardio_data['ap_normal'] = ((cardio_data.ap_hi.between(85, 125)) & (
+    cardio_data.ap_lo.between(55, 85))).astype('int')
+print(cardio_data.describe())
