@@ -1,7 +1,8 @@
 import os
+import numpy as np
 import pandas as pd
 
-from sklearn.preprocessing import Imputer
+from sklearn.impute import SimpleImputer
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -15,18 +16,15 @@ def load_dataset():
     return dataset
 
 
-def care_out_missing_data(dataset):
-    imputer = Imputer(missing_values='NaN', strategy='mean', axis=0)
-    return imputer.fit(dataset)
-
-
 if __name__ == "__main__":
     dataset = load_dataset()
 
     X = dataset.iloc[:, :-1].values
     y = dataset.iloc[:, 3].values
 
-    imputer = care_out_missing_data(X[:, 1:3])
-    X[:, 1:3] = imputer.transform(X[:, 1:3])
+    missingvalues = SimpleImputer(
+        missing_values=np.nan, strategy='mean', verbose=0)
+    missingvalues = missingvalues.fit(dataset)
+    X[:, 1:3] = missingvalues.transform(X[:, 1:3])
 
     print(X)
