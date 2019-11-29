@@ -3,6 +3,9 @@ import numpy as np
 import pandas as pd
 
 from sklearn.impute import SimpleImputer
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import LabelEncoder
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -24,7 +27,11 @@ if __name__ == "__main__":
 
     missingvalues = SimpleImputer(
         missing_values=np.nan, strategy='mean', verbose=0)
-    missingvalues = missingvalues.fit(dataset)
+    missingvalues = missingvalues.fit(X[:, 1:3])
     X[:, 1:3] = missingvalues.transform(X[:, 1:3])
 
-    print(X)
+    ct = ColumnTransformer(
+        [('encoder', OneHotEncoder(), [0])], remainder='passthrough')
+    X = np.array(ct.fit_transform(X), dtype=np.float)
+
+    y = LabelEncoder().fit_transform(y)
