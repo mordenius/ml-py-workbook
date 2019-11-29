@@ -7,6 +7,8 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import LabelEncoder
 
+from sklearn.model_selection import train_test_split
+
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
 
@@ -35,3 +37,6 @@ if __name__ == "__main__":
     X = np.array(ct.fit_transform(X), dtype=np.float)
 
     y = LabelEncoder().fit_transform(y)
+
+    X_train, X_test, y_train,  y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
