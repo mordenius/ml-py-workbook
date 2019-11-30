@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -32,3 +33,8 @@ if __name__ == "__main__":
     r2_score = regression_model.score(X, y)
 
     print(r2_score)
+
+    plt.scatter(X_train, y_train, color='red')
+    plt.scatter(X_test, y_test, color='green')
+    plt.plot(X_train, regression_model.predict(X_train), color='blue')
+    plt.show()
