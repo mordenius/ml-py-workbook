@@ -67,6 +67,49 @@ def accessing():
     print('--> {}'.format(b))
 
 
+def initialises():
+    shape = (2, 3)
+    # All 0s matrix
+    zeros_np = np.zeros(shape)
+
+    # All 1s matrix
+    np.ones(shape)
+
+    # Any number
+    np.full(shape, 99)
+
+    # Shape from another
+    np.full_like(zeros_np, 99)
+
+    # Random decimal number
+    np.random.rand(shape[0], shape[1])
+
+    # Random int number
+    np.random.randint(-5, 7, size=shape)
+
+    # The identity matrix
+    np.identity(5)
+
+    # Repeat an array
+    arr = [[1, 2, 3]]
+    np.repeat(arr, 3, axis=1)
+
+    # Creative
+    output = np.ones((5, 5))
+
+    z = np.zeros((3, 3))
+    z[1, 1] = 9
+
+    output[1:-1, 1:-1] = z
+    print(output)
+
+    # Copying
+    a = np.array([1, 2, 3])
+    b = a.copy()
+    print(b)
+
+
 if __name__ == '__main__':
     # basics()
-    accessing()
+    # accessing()
+    initialises()
