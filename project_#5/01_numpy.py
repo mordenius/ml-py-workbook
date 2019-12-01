@@ -156,10 +156,34 @@ def statistics():
     np.sum(stats, axis=1)  # [5, 7, 9]
 
 
+def reorganizing():
+    before = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+
+    after = before.reshape((4, 2))
+    after_than = after.reshape((2, 2, 2))
+
+    print(after_than)
+
+    # Vertically stacking vectors
+    v1 = np.array([1, 2, 3, 4])
+    v2 = np.array([5, 6, 7, 8])
+
+    np.vstack([v1, v2, v1])
+
+    # Horizontal stacking vectors
+    h1 = np.zeros((2, 4))
+    h2 = np.ones((2, 2))
+
+    np.hstack((h1, h2, h1))
+
+    np.stack((h1, h1), axis=1)
+
+
 if __name__ == '__main__':
     # basics()
     # accessing()
     # initialises()
     # mathematics()
     # linear_algebra()
-    statistics()
+    # statistics()
+    reorganizing()
