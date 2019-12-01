@@ -109,7 +109,23 @@ def initialises():
     print(b)
 
 
+def mathematics():
+    a = np.array([1, 2, 3, 4])
+
+    print(a + 2)
+    print(a - 2)
+    print(a * 2)
+    print(a / 2)
+    print(a ** 3)
+
+    # Take the sin
+    np.cos(a)
+
+    # Reference https: // docs.scipy.org / doc / numpy / reference / routines.math.html
+
+
 if __name__ == '__main__':
     # basics()
     # accessing()
-    initialises()
+    # initialises()
+    mathematics()
