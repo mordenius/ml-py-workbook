@@ -179,6 +179,11 @@ def reorganizing():
     np.stack((h1, h1), axis=1)
 
 
+def miscellaneous():
+    a = np.fromstring('1, 2, 3, 5, 6, 8', dtype='int', sep=',')
+    print(a.reshape((2, 3)))
+
+
 if __name__ == '__main__':
     # basics()
     # accessing()
@@ -186,4 +191,5 @@ if __name__ == '__main__':
     # mathematics()
     # linear_algebra()
     # statistics()
-    reorganizing()
+    # reorganizing()
+    miscellaneous()
