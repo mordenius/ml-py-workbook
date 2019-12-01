@@ -144,9 +144,22 @@ def linear_algebra():
     # etc...
 
 
+def statistics():
+    stats = np.array([[1, 2, 3], [4, 5, 6]])
+
+    np.min(stats)  # 1
+    np.max(stats)  # 6
+
+    np.min(stats, axios=0)  # [3, 6]
+
+    np.sum(stats)  # 21
+    np.sum(stats, axis=1)  # [5, 7, 9]
+
+
 if __name__ == '__main__':
     # basics()
     # accessing()
     # initialises()
     # mathematics()
-    linear_algebra()
+    # linear_algebra()
+    statistics()
