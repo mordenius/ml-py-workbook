@@ -124,8 +124,29 @@ def mathematics():
     # Reference https: // docs.scipy.org / doc / numpy / reference / routines.math.html
 
 
+def linear_algebra():
+    a = np.ones((2, 3))
+    b = np.full((3, 2), 2)
+
+    print(np.matmul(a, b))
+
+    # Find the determinant
+    c = np.identity(3)
+    np.linalg.det(c)
+
+    # Reference (https://docs.scipy.org/doc/numpy/reference/routines.linalg.html)
+    # Determinant
+    # Trace
+    # Singular Vector Decomposition
+    # Eigenvalues
+    # Matrix Norm
+    # Inverse
+    # etc...
+
+
 if __name__ == '__main__':
     # basics()
     # accessing()
     # initialises()
-    mathematics()
+    # mathematics()
+    linear_algebra()
