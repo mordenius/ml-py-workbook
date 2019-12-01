@@ -184,6 +184,22 @@ def miscellaneous():
     print(a.reshape((2, 3)))
 
 
+def boolean_masking():
+    a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+    bool_mask = (a == 5)
+    print(a[bool_mask])
+
+    print(a[a > 5])
+
+    np.any(a > 5, axis=0)
+
+
+def advanced_indexing():
+    a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    print(a[[0, 1, 5, 8]])
+
+
 if __name__ == '__main__':
     # basics()
     # accessing()
@@ -192,4 +208,6 @@ if __name__ == '__main__':
     # linear_algebra()
     # statistics()
     # reorganizing()
-    miscellaneous()
+    # miscellaneous()
+    boolean_masking()
+    advanced_indexing()
