@@ -14,3 +14,12 @@ Machine Learning with Python
 ### Machine Learning A-Z | Udemy
 [Machine Learning A-Z™: Hands-On Python & R In Data Science](https://www.udemy.com/course/machinelearning/)
 
+## Project #4
+### Основы статистики | Институт биоинформатики
+[Основы статистики. Анатолий Карпов](https://youtu.be/ksdrNa_g11M)
+
+## Project #5
+### Tools
+
+freeCodeCamp \
+[Python NumPy Tutorial for Beginners](https://youtu.be/QUT1VHiLmmI?list=PLVHmlghSYMLV1eDWqPXvW2C8m6OG1R16w)
