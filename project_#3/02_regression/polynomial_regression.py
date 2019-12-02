@@ -1,4 +1,5 @@
 import os
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
@@ -25,9 +26,9 @@ def visualise_linear_results(X, y, predictions):
     plt.show()
 
 
-def visualise_polynomial_results(X, y, predictions):
+def visualise_polynomial_results(X, y, X_grid, predictions):
     plt.scatter(X, y, color='red')
-    plt.plot(X, predictions, color='blue')
+    plt.plot(X_grid, predictions, color='blue')
     plt.title('Truth of Bluff (Polynomial Regression))')
     plt.xlabel('Position level')
     plt.ylabel('Salary')
@@ -59,6 +60,9 @@ if __name__ == '__main__':
     # visualise_linear_results(X, y, linear_regression.predict(X))
 
     # Visualising the Polynomial Linear Regression results
-    predictions = linear_over_poly_regression.predict(polynomial_regression.fit_transform(X))
+    X_grid = np.arange(min(X), max(X), 0.1)
+    X_grid = X_grid.reshape((len(X_grid), 1))
+    predictions = linear_over_poly_regression.predict(polynomial_regression.fit_transform(X_grid))
+
     visualise_polynomial_results(
-        X, y, predictions)
+        X, y, X_grid, predictions)
