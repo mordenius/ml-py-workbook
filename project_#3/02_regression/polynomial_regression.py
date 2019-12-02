@@ -49,7 +49,7 @@ if __name__ == '__main__':
     linear_regression.fit(X, y)
 
     # Fitting Polynomial Regression to the dataset
-    polynomial_regression = PolynomialFeatures(degree=2) # try 5
+    polynomial_regression = PolynomialFeatures(degree=2)  # try 5
     X_poly = polynomial_regression.fit_transform(X)
     polynomial_regression.fit(X_poly, y)
 
@@ -60,9 +60,17 @@ if __name__ == '__main__':
     # visualise_linear_results(X, y, linear_regression.predict(X))
 
     # Visualising the Polynomial Linear Regression results
-    X_grid = np.arange(min(X), max(X), 0.1)
-    X_grid = X_grid.reshape((len(X_grid), 1))
-    predictions = linear_over_poly_regression.predict(polynomial_regression.fit_transform(X_grid))
+    # X_grid = np.arange(min(X), max(X), 0.1)
+    # X_grid = X_grid.reshape((len(X_grid), 1))
+    # predictions = linear_over_poly_regression.predict(polynomial_regression.fit_transform(X_grid))
+    #
+    # visualise_polynomial_results(
+    #     X, y, X_grid, predictions)
 
-    visualise_polynomial_results(
-        X, y, X_grid, predictions)
+    # Predicting a new result with Linear Regression
+    linear_predict = linear_regression.predict(np.array(6.5).reshape(-1,1))
+
+    # Predicting a new result with Polymial Regression
+    polynomial_predict = linear_over_poly_regression.predict(polynomial_regression.fit_transform(np.array(6.5).reshape(-1,1)))
+
+    print('Predictions: linear is %ds and polynomial is %ds' % (linear_predict, polynomial_predict))
