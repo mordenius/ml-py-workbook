@@ -1,15 +1,12 @@
-import os
-
+import datasets.dataset_provider as data_provider
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-
 # Reading Data
-cardio_data = pd.read_csv(os.path.join(dir_path, 'cardio_train.csv'), sep=';')
+cardio_data = data_provider.get_cardio()
 
 # Remove column `id`
 cardio_data.drop('id', axis=1, inplace=True)
