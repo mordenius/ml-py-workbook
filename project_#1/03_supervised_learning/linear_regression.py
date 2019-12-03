@@ -1,7 +1,5 @@
-import os
-
+import datasets.dataset_provider as data_provider
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
 from sklearn.linear_model import LinearRegression
@@ -9,10 +7,8 @@ from sklearn.metrics import mean_squared_error
 
 plt.rcParams['figure.figsize'] = (20., 10.)
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-
 # Reading Data
-data = pd.read_csv(os.path.join(dir_path, 'headbrain.csv'))
+data = data_provider.get_head_brain()
 print(data.shape)
 
 print(data.head())
@@ -32,8 +28,8 @@ cnt = len(X)
 number = 0
 denom = 0
 for i in range(cnt):
-	number += (X[i] - mean_X) * (Y[i] - mean_Y)
-	denom += (X[i] - mean_X) ** 2
+    number += (X[i] - mean_X) * (Y[i] - mean_Y)
+    denom += (X[i] - mean_X) ** 2
 b1 = number / denom
 b0 = mean_Y - (b1 * mean_X)
 
@@ -61,10 +57,10 @@ plt.show()
 ss_t = 0
 ss_r = 0
 for i in range(cnt):
-	y_pred = b0 + b1 * X[i]
-	ss_t += (Y[i] - mean_Y) ** 2
-	ss_r += (Y[i] - y_pred) ** 2
-r2 = 1 - (ss_r/ss_t)
+    y_pred = b0 + b1 * X[i]
+    ss_t += (Y[i] - mean_Y) ** 2
+    ss_r += (Y[i] - y_pred) ** 2
+r2 = 1 - (ss_r / ss_t)
 print(r2)
 
 # Cannor use Rank 1 matrix in scikit learn

@@ -1,17 +1,12 @@
-import os
+import datasets.dataset_provider as data_provider
 import math
 import random
-import pandas as pd
 
 from sklearn.model_selection import train_test_split
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-
 
 def load_dataset():
-    full_path = os.path.join(
-        dir_path, './../../datasets/datasets/pima_data_orig.csv')
-    dataset = pd.read_csv(full_path, sep=',')
+    dataset = data_provider.get_pima()
     return dataset.values.tolist()
 
 

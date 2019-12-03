@@ -1,8 +1,4 @@
-import os
-import math
-
-import numpy as np
-import pandas as pd
+import datasets.dataset_provider as data_provider
 
 
 from sklearn.model_selection import train_test_split
@@ -26,11 +22,8 @@ def resolveAccuracy(X_train, X_test, y_train, y_test):
     return accuracy
 
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-
 # Reading Data
-dataset = pd.read_csv(os.path.join(
-    dir_path, '../../datasets/datasets/social_network_ads.csv'), sep=',')
+dataset = data_provider.get_social_network_ads()
 
 # Prepare Data
 X = dataset.iloc[:, [2, 3]].values

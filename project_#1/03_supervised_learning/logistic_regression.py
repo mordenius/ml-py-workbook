@@ -1,6 +1,6 @@
-import os
 import math
-
+import datasets.dataset_provider as data_provider
+import random
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -12,10 +12,9 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 
 plt.rcParams['figure.figsize'] = (20., 10.)
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
 
 # Reading Data
-data = pd.read_csv(os.path.join(dir_path, 'titanic.csv'), sep='\t')
+data = data_provider.get_titanic()
 
 # Collecting X and Y
 # X = data['Head Size(cm^3)'].values
@@ -49,9 +48,7 @@ data.dropna(inplace=True)
 
 # Binary Mask - Male True or False
 sex = pd.get_dummies(data['Sex'], drop_first=True)
-
 embark = pd.get_dummies(data['Embarked'], drop_first=True)
-
 pclass = pd.get_dummies(data['Pclass'], drop_first=True)
 
 prepared_data = pd.concat([data, sex, embark, pclass], axis=1)

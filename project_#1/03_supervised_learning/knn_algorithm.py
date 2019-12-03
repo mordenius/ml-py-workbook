@@ -1,14 +1,11 @@
-import pandas as pd
+import datasets.dataset_provider as data_provider
 import random
 import math
 import operator
 
-iris_url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
-names = ["sepal-length", "sepal-width", "petal-length", "petal-width", "class"]
-
 
 def load_dataset(split, training_set=[], test_set=[]):
-    dataset = pd.read_csv(iris_url, names=names)
+    dataset = data_provider.get_iris()
     for index in range(dataset.shape[0]):
         if random.random() < split:
             training_set.append(dataset.loc[index])
