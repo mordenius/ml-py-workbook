@@ -3,7 +3,7 @@ import datasets.dataset_provider as data_provider
 
 import numpy as np
 
-data_iris = data_provider.getIris()
+data_iris = data_provider.get_iris()
 y = data_iris.iloc[:, 0].values
 
 

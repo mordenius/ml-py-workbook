@@ -13,26 +13,26 @@ iris_url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.
 names = ["sepal-length", "sepal-width", "petal-length", "petal-width", "class"]
 
 
-def getIris():
+def get_iris():
     return pandas.read_csv(iris_url, names=names)
 
 
-def getHeadBrain():
-    return _read_from_file('headbrain.csv')
+def get_head_brain():
+    return _read_from_file('head_brain.csv')
 
 
-def getTitanic():
+def get_titanic():
     return _read_from_file('titanic.csv')
 
 
 class Dataset(enum.Enum):
     iris = 1
-    headbrain = 2
+    head_brain = 2
     titanic = 3
 
 
-_datasets = (None, getIris, getHeadBrain, getTitanic)
+_datasets = (None, get_iris, get_head_brain, get_titanic)
 
 
-def getDataset(dataset):
+def get_dataset(dataset):
     return _datasets[dataset]()
