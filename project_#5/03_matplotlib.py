@@ -26,8 +26,8 @@ def lines():
     plt.plot([2, 3, 4], [2, 3, 4], label='Second line')
 
 
-def hist():
-    plt.hist(y, histtype='bar', rwidth=0.8)
+def hist(_plt=plt):
+    _plt.hist(y, histtype='bar', rwidth=0.8)
 
 
 def bar():
@@ -35,8 +35,8 @@ def bar():
     plt.bar([x for x in range(y.size)], y, label='Bars')
 
 
-def scatter():
-    plt.scatter([x for x in range(y.size)], y)
+def scatter(_plt=plt):
+    _plt.scatter([x for x in range(y.size)], y)
 
 
 def stack_plot():
@@ -48,17 +48,18 @@ def stack_plot():
     plt.stackplot(labels, *get_sum_of_column(), colors=['c', 'g', 'y', 'm'])
 
 
-def pie():
-    plt.pie([int(x) for x in get_sum_of_column()], labels=data_iris.columns[:-1], colors=['c', 'g', 'y', 'm'],
-            autopct='%1.1f%%')
+def pie(_plt=plt):
+    _plt.pie([int(x) for x in get_sum_of_column()], labels=data_iris.columns[:-1], colors=['c', 'g', 'y', 'm'],
+             autopct='%1.1f%%')
 
 
-def draw_plot(tiny=False):
-    if not tiny:
-        plt.xlabel('X - axis')
-        plt.ylabel('Y - axis')
-        plt.legend()  # show labels
+def set_xy_labels():
+    plt.xlabel('X - axis')
+    plt.ylabel('Y - axis')
 
+
+def draw_plot():
+    plt.legend()  # show labels
     plt.title('Simple plot\nWith title')
     plt.show()
 
@@ -66,9 +67,18 @@ def draw_plot(tiny=False):
 if __name__ == '__main__':
     # lines()
     # bar()
-    # hist()
-    # scatter()
     # stack_plot()
-    pie()
+    # oie()
 
-    draw_plot(True)
+    fig = plt.figure()
+    plt.subplots_adjust(left=0.08, bottom=0.16, right=0.95, wspace=0.2, hspace=0)
+
+    left = plt.subplot2grid((1, 2), (0, 0))
+    scatter(left)
+    set_xy_labels()
+
+    right = plt.subplot2grid((1, 2), (0, 1))
+    hist(right)
+    set_xy_labels()
+
+    draw_plot()
