@@ -18,11 +18,15 @@ def get_iris():
 
 
 def get_head_brain():
-    return _read_from_file('head_brain.csv')
+    return _read_from_file('./datasets/head_brain.csv')
 
 
 def get_titanic():
-    return _read_from_file('titanic.csv')
+    return _read_from_file('./datasets/titanic.csv')
+
+
+def get_pima():
+    return _read_from_file('./datasets/pima_data_orig.csv')
 
 
 def get_cardio():
@@ -53,16 +57,18 @@ class Dataset(enum.Enum):
     iris = 1
     head_brain = 2
     titanic = 3
-    cardio = 4
-    country_salaries = 5
-    experience_salaries = 6
-    position_salaries = 7
-    startups = 8
-    social_network_ads = 9
+    pima = 4
+    cardio = 5
+    country_salaries = 6
+    experience_salaries = 7
+    position_salaries = 8
+    startups = 9
+    social_network_ads = 10
 
 
-_datasets = (None, get_iris, get_head_brain, get_titanic, get_cardio, get_country_salaries, get_experience_salaries,
-             get_position_salaries, get_startups, get_social_network_ads)
+_datasets = (
+    None, get_iris, get_head_brain, get_titanic, get_pima, get_cardio, get_country_salaries, get_experience_salaries,
+    get_position_salaries, get_startups, get_social_network_ads)
 
 
 def get_dataset(dataset):
