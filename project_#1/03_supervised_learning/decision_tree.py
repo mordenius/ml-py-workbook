@@ -27,7 +27,7 @@ def class_counts(rows):
 
 
 def is_numeric(value):
-    """ Test if a value is numerid"""
+    """ Test if a value is numeric """
     return isinstance(value, int) or isinstance(value, float)
 
 
@@ -122,7 +122,7 @@ def find_best_split(rows):
             if len(true_rows) == 0 or len(false_rows) == 0:
                 continue
 
-             # Calculate the information gain from this split
+            # Calculate the information gain from this split
             gain = info_gain(true_rows, false_rows, current_uncertainty)
 
             if gain >= best_gain:
@@ -142,10 +142,10 @@ class Leaf:
         self.predictions = class_counts(rows)
 
 
-class Decision_Node:
+class DecisionNode:
     """ A Decision Node asks a question
 
-    This holds a reference to the question, and to the two childe nodes
+    This holds a reference to the question, and to the two child nodes
     """
 
     def __init__(self, question, true_branch, false_branch):
@@ -155,9 +155,9 @@ class Decision_Node:
 
 
 def build_tree(rows):
-    """ Build the eree """
+    """ Build the tree """
 
-    # Try partitioing the dataset on each of the unique attribute,
+    # Try partitioning the dataset on each of the unique attribute,
     # calculate the information gain
     # and return the question that produces the highest gain
     gain, question = find_best_split(rows)
@@ -180,7 +180,7 @@ def build_tree(rows):
     # This records the best feature / value to ask at the point
     # as well as the branches, to follow
     # depending to the answer
-    return Decision_Node(question, true_branch, false_branch)
+    return DecisionNode(question, true_branch, false_branch)
 
 
 def print_tree(node, spacing=""):
