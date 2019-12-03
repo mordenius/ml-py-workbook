@@ -1,6 +1,5 @@
-import os
+import datasets.dataset_provider as data_provider
 import numpy as np
-import pandas as pd
 
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
@@ -10,16 +9,10 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-DIR_PATH = os.path.dirname(os.path.realpath(__file__))
-
 
 def load_dataset():
-    ''' Reading Data '''
-
-    full_path = os.path.join(
-        DIR_PATH, './../../datasets/project_#3/02_section_data.csv')
-    dataset = pd.read_csv(full_path, sep=',')
-    return dataset
+    """ Reading Data """
+    return data_provider.get_country_salaries()
 
 
 if __name__ == "__main__":

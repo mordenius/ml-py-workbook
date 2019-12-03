@@ -1,6 +1,5 @@
-import os
+import datasets.dataset_provider as data_provider
 import numpy as np
-import pandas as pd
 
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
@@ -11,16 +10,10 @@ from sklearn.linear_model import LinearRegression
 
 import statsmodels.regression.linear_model as sm
 
-DIR_PATH = os.path.dirname(os.path.realpath(__file__))
-
 
 def load_dataset():
-    ''' Reading Data '''
-
-    full_path = os.path.join(
-        DIR_PATH, './../../datasets/project_#3/05_fifty_startups.csv')
-    dataset = pd.read_csv(full_path, sep=',')
-    return dataset
+    """ Reading Data """
+    return data_provider.get_startups()
 
 
 def backward_elimination(x, sl):

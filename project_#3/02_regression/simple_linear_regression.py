@@ -1,20 +1,14 @@
-import os
-import pandas as pd
+import datasets.dataset_provider as data_provider
+
 import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 
-DIR_PATH = os.path.dirname(os.path.realpath(__file__))
-
 
 def load_dataset():
-    ''' Reading Data '''
-
-    full_path = os.path.join(
-        DIR_PATH, './../../datasets/project_#3/04_section_salary_data.csv')
-    dataset = pd.read_csv(full_path, sep=',')
-    return dataset
+    """ Reading Data """
+    return data_provider.get_position_salaries()
 
 
 if __name__ == "__main__":

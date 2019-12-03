@@ -1,20 +1,15 @@
-import os
+import datasets.dataset_provider as data_provider
 import numpy as np
-import pandas as pd
+
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
 
-DIR_PATH = os.path.dirname(os.path.realpath(__file__))
-
 
 def load_dataset():
     """ Reading Data """
-
-    full_path = os.path.join(
-        DIR_PATH, './../../datasets/project_#3/06_position_salaries.csv')
-    return pd.read_csv(full_path, sep=',')
+    return data_provider.get_position_salaries()
 
 
 def visualise_linear_results(X, y, predictions):
