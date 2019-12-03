@@ -29,6 +29,14 @@ def get_pima():
     return _read_from_file('./datasets/pima_data_orig.csv')
 
 
+def get_retail_online():
+    return _read_from_file('./datasets/online_retail.csv')
+
+
+def get_movie_metadata():
+    return _read_from_file('./datasets/movie_metadata.csv')
+
+
 def get_cardio():
     return _read_from_file('./project_#2/cardio_train.csv', sep=';')
 
@@ -58,16 +66,19 @@ class Dataset(enum.Enum):
     head_brain = 2
     titanic = 3
     pima = 4
-    cardio = 5
-    country_salaries = 6
-    experience_salaries = 7
-    position_salaries = 8
-    startups = 9
-    social_network_ads = 10
+    retail_online = 5
+    movie_metadata = 6
+    cardio = 7
+    country_salaries = 8
+    experience_salaries = 9
+    position_salaries = 10
+    startups = 11
+    social_network_ads = 12
 
 
 _datasets = (
-    None, get_iris, get_head_brain, get_titanic, get_pima, get_cardio, get_country_salaries, get_experience_salaries,
+    None, get_iris, get_head_brain, get_titanic, get_pima, get_retail_online, get_movie_metadata, get_cardio,
+    get_country_salaries, get_experience_salaries,
     get_position_salaries, get_startups, get_social_network_ads)
 
 

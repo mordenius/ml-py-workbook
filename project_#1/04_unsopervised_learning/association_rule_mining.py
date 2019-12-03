@@ -1,22 +1,19 @@
-import os
-import pandas as pd
+import datasets.dataset_provider as data_provider
 
 from mlxtend.frequent_patterns import apriori, association_rules
 
-DIR_PATH = os.path.dirname(os.path.realpath(__file__))
-
 
 def load_dataset():
-    full_path = os.path.join(
-        DIR_PATH, './../../datasets/datasets/online_retail.csv')
-    dataset = pd.read_csv(full_path, sep=',')
+    dataset = data_provider.get_retail_online()
     return dataset
+
 
 def encode_units(unit):
     if unit <= 0:
         return 0
     else:
         return 1
+
 
 if __name__ == "__main__":
     dataset = load_dataset()

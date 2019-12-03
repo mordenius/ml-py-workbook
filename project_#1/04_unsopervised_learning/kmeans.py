@@ -1,12 +1,9 @@
-import os
+import datasets.dataset_provider as data_provider
 import numpy as np
-import pandas as pd
 import seaborn as sns
 from matplotlib import pyplot as plt
 
 from sklearn.cluster import KMeans
-
-DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
 
 def main():
@@ -16,9 +13,7 @@ def main():
 
 
 def load_dataset():
-    full_path = os.path.join(
-        DIR_PATH, './../../datasets/datasets/movie_metadata.csv')
-    dataset = pd.read_csv(full_path, sep=',')
+    dataset = data_provider.get_movie_metadata()
     return dataset
 
 
