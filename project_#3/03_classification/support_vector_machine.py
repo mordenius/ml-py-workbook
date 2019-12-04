@@ -51,7 +51,9 @@ if __name__ == '__main__':
     X_test = sc_X.fit_transform(X_test)
 
     # classifier = SVC(kernel='linear', random_state=42)
-    classifier = SVC(gamma='scale', random_state=42)
+    # classifier = SVC(kernel='sigmoid', random_state=42)
+    # classifier = SVC(kernel='rbf', random_state=42)
+    classifier = SVC(kernel='poly', degree=3, random_state=42)
     classifier.fit(X_train, y_train)
 
     # Predicting a new result with Regression
