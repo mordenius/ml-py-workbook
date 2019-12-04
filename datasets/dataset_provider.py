@@ -61,6 +61,10 @@ def get_social_network_ads():
     return _read_from_file('./project_#3/12_social_network_ads.csv')
 
 
+def get_mall_customers():
+    return _read_from_file('./project_#3/21_mall_customers.csv')
+
+
 class Dataset(enum.Enum):
     iris = 1
     head_brain = 2
@@ -74,12 +78,13 @@ class Dataset(enum.Enum):
     position_salaries = 10
     startups = 11
     social_network_ads = 12
+    mall_customers = 13
 
 
 _datasets = (
     None, get_iris, get_head_brain, get_titanic, get_pima, get_retail_online, get_movie_metadata, get_cardio,
     get_country_salaries, get_experience_salaries,
-    get_position_salaries, get_startups, get_social_network_ads)
+    get_position_salaries, get_startups, get_social_network_ads, get_mall_customers)
 
 
 def get_dataset(dataset):
