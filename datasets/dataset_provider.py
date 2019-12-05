@@ -65,6 +65,9 @@ def get_mall_customers():
     return _read_from_file('./project_#3/21_mall_customers.csv')
 
 
+def get_market_basket_optimisation():
+    return _read_from_file('./project_#3/28_market_basket_optimisation.csv')
+
 class Dataset(enum.Enum):
     iris = 1
     head_brain = 2
@@ -78,7 +81,8 @@ class Dataset(enum.Enum):
     position_salaries = 10
     startups = 11
     social_network_ads = 12
-    mall_customers = 13
+    mall_customers = 13,
+    market_basket_optimisation = 14
 
 
 _datasets = (
