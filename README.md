@@ -23,3 +23,6 @@ Machine Learning with Python
 
 freeCodeCamp \
 [Python NumPy Tutorial for Beginners](https://youtu.be/QUT1VHiLmmI?list=PLVHmlghSYMLV1eDWqPXvW2C8m6OG1R16w)
+
+## Project #6
+Data Science. Наука о данных с нуля. Джоэль Грас | O'Reilly
