@@ -51,17 +51,13 @@ plt.title('Histogram of ads selections (Random)')
 plt.xlabel('Ads')
 plt.ylabel('Number of times each ad was selected')
 
-# Implementing Upper Confidence Bound
-N = 10000
-d = 10
-ads_selected = []
-numbers_of_selections = [0] * d
-sums_of_rewards = [0] * d
-total_reward = 0
-for n in range(0, N):
+numbers_of_selections = [0] * 10
+sums_of_rewards = [0] * 10
+
+def upc_algorithm(selections, n):
     ad = 0
     max_upper_bound = 0
-    for i in range(0, d):
+    for i in range(0, selections.d):
         if numbers_of_selections[i] > 0:
             average_reward = sums_of_rewards[i] / numbers_of_selections[i]
             delta_i = math.sqrt(3 / 2 * math.log(n + 1) / numbers_of_selections[i])
@@ -71,15 +67,44 @@ for n in range(0, N):
         if upper_bound > max_upper_bound:
             max_upper_bound = upper_bound
             ad = i
-    ads_selected.append(ad)
+    selections.ads_selected.append(ad)
     numbers_of_selections[ad] += 1
     reward = dataset.values[n, ad]
     sums_of_rewards[ad] += reward
-    total_reward += reward
+    selections.total_reward += reward
+
+# Implementing Upper Confidence Bound
+# N = 10000
+# d = 10
+# ads_selected = []
+# numbers_of_selections = [0] * d
+# sums_of_rewards = [0] * d
+# total_reward = 0
+# for n in range(0, N):
+#     ad = 0
+#     max_upper_bound = 0
+#     for i in range(0, d):
+#         if numbers_of_selections[i] > 0:
+#             average_reward = sums_of_rewards[i] / numbers_of_selections[i]
+#             delta_i = math.sqrt(3 / 2 * math.log(n + 1) / numbers_of_selections[i])
+#             upper_bound = average_reward + delta_i
+#         else:
+#             upper_bound = 1e400
+#         if upper_bound > max_upper_bound:
+#             max_upper_bound = upper_bound
+#             ad = i
+#     ads_selected.append(ad)
+#     numbers_of_selections[ad] += 1
+#     reward = dataset.values[n, ad]
+#     sums_of_rewards[ad] += reward
+#     total_reward += reward
+
+ucp_selection = Selections(upc_algorithm)
+ucp_selection.start()
 
 # Visualising the results
 right = plt.subplot2grid((1, 2), (0, 1))
-right.hist(ads_selected)
+right.hist(ucp_selection.ads_selected)
 plt.title('Histogram of ads selections (UCB)')
 plt.xlabel('Ads')
 plt.ylabel('Number of times each ad was selected')
