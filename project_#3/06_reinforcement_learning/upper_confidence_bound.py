@@ -5,25 +5,28 @@ import matplotlib.pyplot as plt
 
 dataset = data_provider.get_ads_ctr_optimisation()
 
+fig = plt.figure()
+plt.subplots_adjust(left=0.08, bottom=0.16, right=0.95, wspace=0.2, hspace=0)
+
 # Implementing Random Selection
-# import random
-#
-# N = 10000
-# d = 10
-# ads_selected = []
-# total_reward = 0
-# for n in range(0, N):
-#     ad = random.randrange(d)
-#     ads_selected.append(ad)
-#     reward = dataset.values[n, ad]
-#     total_reward = total_reward + reward
-#
-# # Visualising the results
-# plt.hist(ads_selected)
-# plt.title('Histogram of ads selections')
-# plt.xlabel('Ads')
-# plt.ylabel('Number of times each ad was selected')
-# plt.show()
+import random
+
+N = 10000
+d = 10
+ads_selected = []
+total_reward = 0
+for n in range(0, N):
+    ad = random.randrange(d)
+    ads_selected.append(ad)
+    reward = dataset.values[n, ad]
+    total_reward = total_reward + reward
+
+# Visualising the results
+left = plt.subplot2grid((1, 2), (0, 0))
+left.hist(ads_selected)
+plt.title('Histogram of ads selections (Random)')
+plt.xlabel('Ads')
+plt.ylabel('Number of times each ad was selected')
 
 # Implementing Upper Confidence Bound
 N = 10000
@@ -52,8 +55,9 @@ for n in range(0, N):
     total_reward += reward
 
 # Visualising the results
-plt.hist(ads_selected)
-plt.title('Histogram of ads selections')
+right = plt.subplot2grid((1, 2), (0, 1))
+right.hist(ads_selected)
+plt.title('Histogram of ads selections (UCB)')
 plt.xlabel('Ads')
 plt.ylabel('Number of times each ad was selected')
 plt.show()
