@@ -5,6 +5,16 @@ def get_mean(sample):
     return sum(sample) / len(sample)
 
 
+def get_median(sample):
+    length = len(sample)
+    sorted_ = sorted(sample) # https://en.wikipedia.org/wiki/Quickselect
+    midpoint = length // 2
+
+    if length % 2 == 1:
+        return sorted_[midpoint]
+    return (sorted_[midpoint - 1] + sorted_[midpoint]) / 2
+
+
 def get_standard_deviation(sample):
     mean = get_mean(sample)
     summary = 0.
