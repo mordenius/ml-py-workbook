@@ -1,4 +1,5 @@
 import math
+from collections import Counter
 
 
 def get_mean(sample):
@@ -18,6 +19,13 @@ def get_median(sample):
 def get_quantile(sample, percent):
     index = int(percent * len(sample))
     return sorted(sample)[index]
+
+
+def get_mode(sample):
+    counts = Counter(sample)
+    max_count = max(counts.values())
+
+    return [x_i for x_i, count in counts.items() if count == max_count]
 
 
 def get_standard_deviation(sample):
