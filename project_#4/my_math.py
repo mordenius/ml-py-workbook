@@ -7,12 +7,17 @@ def get_mean(sample):
 
 def get_median(sample):
     length = len(sample)
-    sorted_ = sorted(sample) # https://en.wikipedia.org/wiki/Quickselect
+    sorted_ = sorted(sample)  # https://en.wikipedia.org/wiki/Quickselect
     midpoint = length // 2
 
     if length % 2 == 1:
         return sorted_[midpoint]
     return (sorted_[midpoint - 1] + sorted_[midpoint]) / 2
+
+
+def get_quantile(sample, percent):
+    index = int(percent * len(sample))
+    return sorted(sample)[index]
 
 
 def get_standard_deviation(sample):
@@ -125,6 +130,10 @@ def is_diagonal(i, j):
 if __name__ == '__main__':
     test_sample = [1, 2, 2, 3, 4, 4, 5]
     test_predicted = [1, 2, 2, 3, 4, 3, 5]
+
+    get_quantile(test_sample, 0.25)
+    get_quantile(test_sample, 0.75)
+    get_quantile(test_sample, 0.90)
 
     sd = get_standard_deviation(test_sample)
     r2 = get_r_of_squares(test_sample, test_predicted)
