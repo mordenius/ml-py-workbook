@@ -6,35 +6,35 @@ import matplotlib.pyplot as plt
 
 dataset = data_provider.get_ads_ctr_optimisation()
 
+COUNT_OF_SELECTIONS, COUNT_OF_SUGGESTIONS = dataset.shape
+
 
 class Selections:
     def __init__(self, algorithm):
-        self.N = 10000
-        self.d = 10
         self.algorithm = algorithm
         self.ads_selected = []
         self.total_reward = 0
 
     def start(self):
-        for n in range(0, self.N):
+        for n in range(0, COUNT_OF_SELECTIONS):
             self.algorithm(self, n)
 
 
 def random_algorithm(selections, n):
-    ad = random.randrange(selections.d)
+    ad = random.randrange(COUNT_OF_SUGGESTIONS)
     selections.ads_selected.append(ad)
     reward = dataset.values[n, ad]
     selections.total_reward = selections.total_reward + reward
 
 
-numbers_of_selections = [0] * 10
-sums_of_rewards = [0] * 10
+numbers_of_selections = [0] * COUNT_OF_SUGGESTIONS
+sums_of_rewards = [0] * COUNT_OF_SUGGESTIONS
 
 
 def upc_algorithm(selections, n):
     ad = 0
     max_upper_bound = 0
-    for i in range(0, selections.d):
+    for i in range(0, COUNT_OF_SUGGESTIONS):
         if numbers_of_selections[i] > 0:
             average_reward = sums_of_rewards[i] / numbers_of_selections[i]
             delta_i = math.sqrt(3 / 2 * math.log(n + 1) / numbers_of_selections[i])
