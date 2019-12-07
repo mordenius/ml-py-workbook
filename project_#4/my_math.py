@@ -61,6 +61,14 @@ def get_covariance(sample, predicted):
     return dot(get_de_mean(sample), get_de_mean(predicted)) / (n - 1)
 
 
+def get_correlation(sample, predicted):
+    stdev_sample = get_standard_deviation(sample)
+    stdev_predicted = get_standard_deviation(predicted)
+    if (stdev_sample > 0 and stdev_predicted > 0):
+        return get_covariance(sample, predicted)
+    return 0  # if variables don't change, correlation is zero
+
+
 def get_sum_of_squares_total(sample):
     mean = get_mean(sample)
     return sum(pow(element - mean, 2) for element in sample)
