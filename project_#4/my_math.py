@@ -56,6 +56,11 @@ def get_interquartile_range(sample):
     return get_quantile(sample, 0.75) - get_quantile(sample, 0.25)
 
 
+def get_covariance(sample, predicted):
+    length = len(sample)
+    return dot(get_de_mean(sample), get_de_mean(predicted)) / (n - 1)
+
+
 def get_sum_of_squares_total(sample):
     mean = get_mean(sample)
     return sum(pow(element - mean, 2) for element in sample)
