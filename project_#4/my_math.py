@@ -28,6 +28,10 @@ def get_mode(sample):
     return [x_i for x_i, count in counts.items() if count == max_count]
 
 
+def get_data_range(sample):
+    return max(sample) - min(sample)
+
+
 def get_standard_deviation(sample):
     mean = get_mean(sample)
     summary = 0.
