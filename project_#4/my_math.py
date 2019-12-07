@@ -32,6 +32,17 @@ def get_data_range(sample):
     return max(sample) - min(sample)
 
 
+def get_de_mean(sample):
+    x_bar = get_mean(sample)
+    return [x_i - x_bar for x_i in sample]
+
+
+def get_variance(sample):
+    length = len(sample)
+    deviations = get_de_mean(sample)
+    return get_sum_of_squares_total(deviations) / (length - 1)
+
+
 def get_standard_deviation(sample):
     mean = get_mean(sample)
     summary = 0.
