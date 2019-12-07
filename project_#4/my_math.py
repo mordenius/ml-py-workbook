@@ -52,6 +52,10 @@ def get_standard_deviation(sample):
     return math.sqrt(D)
 
 
+def get_standard_deviation2(sample):
+    return math.sqrt(get_variance(sample))
+
+
 def get_interquartile_range(sample):
     return get_quantile(sample, 0.75) - get_quantile(sample, 0.25)
 
