@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 dataset = data_provider.get_ads_ctr_optimisation()
 
 from upper_confidence_bound import upc_algorithm
+from thompson_sampling import thompson_sampling
 
 
 class Selections:
@@ -35,20 +36,29 @@ random_selection.start()
 ucp_selection = Selections(upc_algorithm, dataset)
 ucp_selection.start()
 
+thompson_selection = Selections(thompson_sampling, dataset)
+thompson_selection.start()
+
 fig = plt.figure()
 plt.subplots_adjust(left=0.08, bottom=0.16, right=0.95, wspace=0.2, hspace=0.5)
 
 # Visualising the results
-first = plt.subplot2grid((2, 1), (0, 0))
+first = plt.subplot2grid((3, 1), (0, 0))
 first.hist(random_selection.ads_selected)
 plt.title('Histogram of ads selections (Random)')
 plt.xlabel('Ads')
 plt.ylabel('Number of times each ad was selected')
 
 # Visualising the results
-second = plt.subplot2grid((2, 1), (1, 0))
+second = plt.subplot2grid((3, 1), (1, 0))
 second.hist(ucp_selection.ads_selected)
 plt.title('Histogram of ads selections (UCB)')
+plt.xlabel('Ads')
+plt.ylabel('Number of times each ad was selected')
+
+third = plt.subplot2grid((3, 1), (2, 0))
+third.hist(thompson_selection.ads_selected)
+plt.title('Histogram of ads selections (Thompson)')
 plt.xlabel('Ads')
 plt.ylabel('Number of times each ad was selected')
 
