@@ -73,6 +73,10 @@ def get_ads_ctr_optimisation():
     return _read_from_file('./project_#3/32_ads_ctr_optimisation.csv')
 
 
+def get_restaurant_reviews():
+    return _read_from_file('./project_#3/36_restaurant_reviews.tsv', sep='\t')
+
+
 class Dataset(enum.Enum):
     iris = 1
     head_brain = 2
@@ -88,13 +92,15 @@ class Dataset(enum.Enum):
     social_network_ads = 12
     mall_customers = 13,
     market_basket_optimisation = 14,
-    ads_ctr_optimisation = 15
+    ads_ctr_optimisation = 15,
+    restaurant_reviews = 16
 
 
 _datasets = (
     None, get_iris, get_head_brain, get_titanic, get_pima, get_retail_online, get_movie_metadata, get_cardio,
     get_country_salaries, get_experience_salaries,
-    get_position_salaries, get_startups, get_social_network_ads, get_mall_customers, get_ads_ctr_optimisation)
+    get_position_salaries, get_startups, get_social_network_ads, get_mall_customers, get_ads_ctr_optimisation,
+    get_restaurant_reviews)
 
 
 def get_dataset(dataset):
