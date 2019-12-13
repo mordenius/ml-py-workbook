@@ -49,3 +49,6 @@ if __name__ == '__main__':
 
     # Compiling the ANN
     classifier.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
+
+    # Fitting ANN to the Training set
+    classifier.fit(X_train, y_train, batch_size=10, nb_epoch=100)
