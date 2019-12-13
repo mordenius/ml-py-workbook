@@ -41,3 +41,5 @@ if __name__ == '__main__':
     # Adding input and first hidden layers
     classifier.add(Dense(output_dim=6, init="uniform", activation="relu", input_dim=11))
 
+    # Adding second hidden layer
+    classifier.add(Dense(output_dim=6, init="uniform", activation="relu"))
