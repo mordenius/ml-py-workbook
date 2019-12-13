@@ -52,3 +52,7 @@ if __name__ == '__main__':
 
     # Fitting ANN to the Training set
     classifier.fit(X_train, y_train, batch_size=10, nb_epoch=100)
+
+    # Predicting the Test set result
+    predictions = classifier.predict(X_test)
+    predictions = (predictions > 0.5)
