@@ -5,6 +5,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import confusion_matrix
 
 import keras
 from keras.models import Sequential
@@ -56,3 +57,7 @@ if __name__ == '__main__':
     # Predicting the Test set result
     predictions = classifier.predict(X_test)
     predictions = (predictions > 0.5)
+
+    # Making the Confusion Matrix
+    cm = confusion_matrix(y_test, predictions)
+    print(cm)
