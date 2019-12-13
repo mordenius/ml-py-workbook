@@ -43,3 +43,6 @@ if __name__ == '__main__':
 
     # Adding second hidden layer
     classifier.add(Dense(output_dim=6, init="uniform", activation="relu"))
+
+    # Adding output layer
+    classifier.add(Dense(output_dim=1, init="uniform", activation="sigmoid"))
