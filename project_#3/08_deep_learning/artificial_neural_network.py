@@ -3,6 +3,8 @@ import numpy as np
 
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 
 
 def load_dataset():
@@ -20,3 +22,11 @@ if __name__ == '__main__':
     ct = ColumnTransformer(
         [('encoder', OneHotEncoder(), [1, 2])], remainder='passthrough')
     X = np.array(ct.fit_transform(X), dtype=np.float)
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
+
+    # Feature Scaling
+    sc_X = StandardScaler()
+    X_train = sc_X.fit_transform(X_train)
+    X_test = sc_X.fit_transform(X_test)
