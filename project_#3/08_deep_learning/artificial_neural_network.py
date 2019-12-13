@@ -6,6 +6,10 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
+import keras
+from keras.models import Sequential
+from keras.layers import Dense
+
 
 def load_dataset():
     """ Reading Data """
@@ -30,3 +34,10 @@ if __name__ == '__main__':
     sc_X = StandardScaler()
     X_train = sc_X.fit_transform(X_train)
     X_test = sc_X.fit_transform(X_test)
+
+    # Initializing the ANN
+    classifier = Sequential()
+
+    # Adding input and first hidden layers
+    classifier.add(Dense(output_dim=6, init="uniform", activation="relu", input_dim=11))
+
