@@ -53,7 +53,7 @@ if __name__ == '__main__':
     # Applying PCA
     pca = PCA(n_components=2)
     X_train = pca.fit_transform(X_train)
-    X_test = pca.fit_transform(X_test)
+    X_test = pca.transform(X_test)
     explained_variance = pca.explained_variance_ratio_
 
     classifier = LogisticRegression(random_state=0, solver='lbfgs', multi_class='auto')
