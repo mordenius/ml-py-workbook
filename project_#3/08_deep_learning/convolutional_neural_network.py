@@ -15,3 +15,7 @@ classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
 # Flattening
 classifier.add(Flatten())
+
+# Full connection
+classifier.add(Dense(output_dim=128, activation="relu"))
+classifier.add(Dense(output_dim=1, activation="sigmoid"))
