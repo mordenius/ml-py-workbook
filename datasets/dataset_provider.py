@@ -81,6 +81,10 @@ def get_churn_modelling():
     return _read_from_file('./project_#3/39_churn_modelling.csv')
 
 
+def get_wine():
+    return _read_from_file('./project_#3/43_wine.csv')
+
+
 class Dataset(enum.Enum):
     iris = 1
     head_brain = 2
@@ -98,14 +102,15 @@ class Dataset(enum.Enum):
     market_basket_optimisation = 14,
     ads_ctr_optimisation = 15,
     restaurant_reviews = 16,
-    churn_modelling = 17
+    churn_modelling = 17,
+    wine = 18
 
 
 _datasets = (
     None, get_iris, get_head_brain, get_titanic, get_pima, get_retail_online, get_movie_metadata, get_cardio,
     get_country_salaries, get_experience_salaries,
     get_position_salaries, get_startups, get_social_network_ads, get_mall_customers, get_ads_ctr_optimisation,
-    get_restaurant_reviews, get_churn_modelling)
+    get_restaurant_reviews, get_churn_modelling, get_wine)
 
 
 def get_dataset(dataset):
