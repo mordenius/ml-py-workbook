@@ -9,6 +9,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
+from sklearn.decomposition import PCA
 
 def load_dataset():
     """ Reading Data """
@@ -48,6 +49,12 @@ if __name__ == '__main__':
     sc_X = StandardScaler()
     X_train = sc_X.fit_transform(X_train)
     X_test = sc_X.fit_transform(X_test)
+
+    # Applying PCA
+    pca = PCA(n_components=2)
+    X_train = pca.fit_transform(X_train)
+    X_test = pca.fit_transform(X_test)
+    explained_variance = pca.explained_variance_ratio_
 
     classifier = LogisticRegression(random_state=0, solver='lbfgs', multi_class='auto')
     classifier.fit(X_train, y_train)
