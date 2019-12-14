@@ -16,6 +16,26 @@ def load_dataset():
     return data_provider.get_social_network_ads()
 
 
+def show_plot_test_data(X, y):
+    X_set, y_set = X, y
+    X1, X2 = np.meshgrid(np.arange(start=X_set[:, 0].min() - 1, stop=X_set[:, 0].max() + 1, step=0.01),
+                         np.arange(start=X_set[:, 0].min() - 1, stop=X_set[:, 0].max() + 1, step=0.01))
+    plt.contourf(X1, X2, classifier.predict(np.array([X1.ravel(), X2.ravel()]).T).reshape(X1.shape),
+                 alpha=0.75, cmap=ListedColormap(('yellow', 'green')))
+    plt.xlim(X1.min(), X1.max())
+    plt.xlim(X2.min(), X2.max())
+
+    for i, j in enumerate(np.unique(y_set)):
+        plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
+                    c=ListedColormap(('red', 'green'))(i), label=j)
+
+    plt.title('Logistic Regression')
+    plt.xlabel('Age')
+    plt.ylabel('Estimated Salary')
+    plt.legend()
+    plt.show()
+
+
 if __name__ == '__main__':
     dataset = load_dataset()
 
@@ -41,3 +61,5 @@ if __name__ == '__main__':
     # Predicting a new result with Regression
     predictions = classifier.predict(X_test)
     cm = confusion_matrix(y_test, predictions)
+
+    show_plot_test_data(X_test, y_test)
