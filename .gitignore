@@ -15,3 +15,5 @@
 
 # Temp files
 *.diff
+
+/datasets/cnn/
