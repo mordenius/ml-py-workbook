@@ -30,8 +30,8 @@ def show_plot_test_data(X, y):
                     c=ListedColormap(('red', 'green', 'blue'))(i), label=j)
 
     plt.title('Logistic Regression')
-    plt.xlabel('PC1')
-    plt.ylabel('PC2')
+    plt.xlabel('LD1')
+    plt.ylabel('LD2')
     plt.legend()
     plt.show()
 
