@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 
-from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import cross_val_score, GridSearchCV
 
 
 def load_dataset():
@@ -62,5 +62,16 @@ if __name__ == '__main__':
     # Applying k-Fold Cross Validation
     accuracies = cross_val_score(estimator=classifier, X=X_train, y=y_train, cv=10)
     print(accuracies.mean(), accuracies.std())
+
+    # Applying Grid Search to find the best model and the best parameters
+    parameters = [
+        {'C': [1, 10, 100, 1000], 'kernel': ['linear']},
+        {'C': [1, 10, 100, 1000], 'kernel': ['rbf'], 'gamma': [0.5, 0.1, 0.01, 0.001]}
+    ]
+    grid_search = GridSearchCV(estimator=classifier, param_grid=parameters, scoring='accuracy', cv=10, iid=False)
+    grid_search = grid_search.fit(X_train, y_train)
+    best_accuracy = grid_search.best_score_
+    best_parameters = grid_search.best_params_
+    print(best_accuracy, best_parameters)
 
     show_plot_test_data(X_test, y_test)
