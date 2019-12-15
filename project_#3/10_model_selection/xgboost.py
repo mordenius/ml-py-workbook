@@ -4,6 +4,8 @@ import numpy as np
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import cross_val_score,
 
 from xgboost import XGBClassifier
 
@@ -29,3 +31,14 @@ if __name__ == '__main__':
     # Fitting XGBoost to the Training set
     classifier = XGBClassifier()
     classifier.fit(X_train, y_train)
+
+    # Predicting the Test set result
+    predictions = classifier.predict(X_test)
+
+    # Making the Confusion Matrix
+    cm = confusion_matrix(y_test, predictions)
+    print(cm)
+
+    # Applying k-Fold Cross Validation
+    accuracies = cross_val_score(estimator=classifier, X=X_train, y=y_train, cv=10)
+    print(accuracies.mean(), accuracies.std())
