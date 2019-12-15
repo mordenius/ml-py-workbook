@@ -10,6 +10,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 
+from sklearn.model_selection import cross_val_score
+
 
 def load_dataset():
     """ Reading Data """
@@ -56,5 +58,9 @@ if __name__ == '__main__':
     # Predicting a new result with Regression
     predictions = classifier.predict(X_test)
     cm = confusion_matrix(y_test, predictions)
+
+    # Applying k-Fold Cross Validation
+    accuracies = cross_val_score(estimator=classifier, X=X_train, y=y_train, cv=10)
+    print(accuracies.mean(), accuracies.std())
 
     show_plot_test_data(X_test, y_test)
